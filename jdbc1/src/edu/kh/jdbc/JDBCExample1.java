@@ -157,7 +157,6 @@ public class JDBCExample1 {
 			// -> 수행하지 않으면 DB와 연결된 Connection이 남아 있어서
 			//    다른 클라이언트가 추가적으로 연결되지 못하는
 			//    문제가 발생할 수 있다
-			
 			try {
 				/* 만들어진 역순으로 close 수행하는 것을 추천 */
 				if(rs != null) rs.close();
@@ -170,53 +169,8 @@ public class JDBCExample1 {
 				e.printStackTrace();
 			}
 			
-			
 		}
 		
-		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

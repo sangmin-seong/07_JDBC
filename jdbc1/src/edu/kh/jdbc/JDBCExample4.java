@@ -52,16 +52,17 @@ public class JDBCExample4 {
 			
 			rs = stmt.executeQuery(sql);
 			
+						
 			while(rs.next()) {
 				
-			String empId    = rs.getString("EMP_ID");
-			String empName  = rs.getString("EMP_Name");
-			String deptTitle = rs.getString("DEPT_TITLE");
-			String jobName  = rs.getString("JOB_NAME");
-			
-			System.out.printf("사번 : %s / 이름 : %s / 부서명 : %s / 직급명 : %s \n",
-					empId, empName, deptTitle, jobName);
-			
+				String empId    = rs.getString("EMP_ID");
+				String empName  = rs.getString("EMP_Name");
+				String deptTitle = rs.getString("DEPT_TITLE");
+				String jobName  = rs.getString("JOB_NAME");
+				
+				System.out.printf("사번 : %s / 이름 : %s / 부서명 : %s / 직급명 : %s \n",
+						empId, empName, deptTitle, jobName);
+				
 			}
 			
 		} catch (Exception e) {

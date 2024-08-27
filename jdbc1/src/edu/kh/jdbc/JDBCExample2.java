@@ -70,18 +70,14 @@ public class JDBCExample2 {
 			// -> 다형성 업캐스팅 적용
 			e.printStackTrace();
 		}finally {
+			/* 7. 사용 완료된 JDBC 객체 자원 반환(close) */
 			try{
-				/* 7. 사용 완료된 JDBC 객체 자원 반환(close) */
 				if(rs != null) rs.close();
 				if(stmt != null) stmt.close();
 				if(conn != null) conn.close();
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
-			
-			
 		}
-			
-
 	}
 }

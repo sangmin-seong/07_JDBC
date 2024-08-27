@@ -26,7 +26,7 @@ public class JDBCExample6 {
 			conn = DriverManager.getConnection(url, userName, password);
 			
 			conn.setAutoCommit(false);
-			
+
 			
 			Scanner sc = new Scanner(System.in);
 			
@@ -72,6 +72,5 @@ public class JDBCExample6 {
 				e.printStackTrace();
 			}
 		}
-				
 	}
 }
