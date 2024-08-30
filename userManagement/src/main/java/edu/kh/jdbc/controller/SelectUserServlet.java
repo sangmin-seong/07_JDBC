@@ -1,8 +1,6 @@
 package edu.kh.jdbc.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import edu.kh.jdbc.dto.user;
 import edu.kh.jdbc.service.UserService;
@@ -12,32 +10,27 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
-@WebServlet("/selectAll")
-public class SelectAllServlet extends HttpServlet{
-	
-	
+@WebServlet("/selectUser")
+public class SelectUserServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+
 		try {
+			String userNum = req.getParameter("userNo");
 			
 			UserService service = new UserServiceImpl();
 			
-			List<user> userList  = service.selectAll();
+			user user = service.selectUser(userNum);
 			
-						
-			req.setAttribute("userList", userList);
+			req.setAttribute("user", user);
 			
-			String path = "/WEB-INF/views/selectAll.jsp";
+			String path = "/WEB-INF/views/selectUser.jsp";
 			req.getRequestDispatcher(path).forward(req, resp);
-		
 			
 			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
 }

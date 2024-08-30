@@ -15,7 +15,9 @@ public class UserServiceImpl implements UserService{
 	//필드
 	private UserDao dao = new UserDaoImpl();
 	
-	
+	/**
+	 * 사용자 등록
+	 */
 	@Override
 	public int insertUser(user user) throws Exception{
 		
@@ -41,6 +43,9 @@ public class UserServiceImpl implements UserService{
 		return result;
 	}
 	
+	/**
+	 * 아이디 중복 체크
+	 */
 	@Override
 	public int idCheck(String userId) throws Exception {
 		
@@ -53,7 +58,9 @@ public class UserServiceImpl implements UserService{
 		return result;
 	}
 	
-	
+	/**
+	 * 로그인
+	 */
 	@Override
 	public user login(String userId, String userPw) throws Exception {
 		
@@ -66,7 +73,9 @@ public class UserServiceImpl implements UserService{
 		return loginUser;
 	}
 	
-	
+	/**
+	 * 사용자 전체 조회
+	 */
 	@Override
 	public List<user> selectAll() throws Exception {
 		List<user> userList = new ArrayList<user>();
@@ -80,5 +89,72 @@ public class UserServiceImpl implements UserService{
 		
 		return userList;
 	}
+
+	/**
+	 * 이름으로 검색
+	 */
+	@Override
+	public List<user> search(String searchId) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		searchId = '%'+searchId + '%';
+		
+		
+		List<user> userList = dao.search(conn, searchId);
+		
+		close(conn);
+		
+		return userList;
+	}
 	
+	
+	@Override
+	public user selectUser(String userNum) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		// 데이터 가공
+		
+		user user = dao.selectUser(conn, userNum);
+		
+		close(conn);
+		
+		return user;
+	}
+	
+	
+	@Override
+	public int updateUser(user user) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.updateUser(conn, user);
+		
+		if(result > 0 ) commit(conn);
+		else  			rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+	
+	
+	
+	
+	@Override
+	public int deleteUser(int userNo) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.deleteUser(conn, userNo);
+		
+		if(result > 0 ) commit(conn);
+		else  			rollback(conn);
+		
+		close(conn);
+		
+		
+		return result;
+	}
 }

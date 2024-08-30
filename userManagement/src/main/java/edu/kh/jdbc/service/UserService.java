@@ -30,6 +30,33 @@ public interface UserService {
 	 */
 	user login(String userId, String userPw) throws Exception;
 
+	
+	/** 사용자 전체 조회
+	 * @return userList
+	 * @throws Exception
+	 */
 	List<user> selectAll() throws Exception;
+
+	
+	/** 아이디에 포함된 단어로 검색
+	 * @param searchId
+	 * @return userList
+	 * @throws Exception
+	 */
+	List<user> search(String searchId) throws Exception;
+	
+	/** 상세조회
+	 * @param userNo
+	 * @return
+	 * @throws Exception
+	 */
+	user selectUser(String userNum) throws Exception;
+
+	int updateUser(user user) throws Exception;
+
+	int deleteUser(int userNo) throws Exception;
+
+
+	
 
 }
