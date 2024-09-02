@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<!-- 
+		driver.xml 파일 : DB 연결 정보를 작성하는 외부 파일
+	
+		entry : K, V 한 쌍을 나타내는 단위
+		<entry key="K"> V </entry>
+	 -->
+	
+
+	
+	<entry key="selectAll">
+	 	SELECT 
+			TODO_NO,
+			TODO_TITLE,
+			TODO_DETAIL,
+			TODO_COMPLETE,
+			TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일"') ENROLL_DATE
+		FROM TB_TODO		
+	</entry>
+	
+	<entry key="addTodo">
+	 	INSERT INTO TB_TODO
+		VALUES(SEQ_TODO_NO.NEXTVAL, ?, ?, 'X', DEFAULT)
+	</entry>
+	
+	
+ 	<entry key="detailTodo">
+	 	SELECT 
+			TODO_NO,
+			TODO_TITLE,
+			TODO_DETAIL,
+			TODO_COMPLETE,
+			TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일"') ENROLL_DATE
+		FROM TB_TODO
+		WHERE TODO_NO = ?		
+	</entry>
+	
+	
+</properties>
